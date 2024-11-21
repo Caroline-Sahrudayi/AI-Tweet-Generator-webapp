@@ -2,9 +2,9 @@ import Replicate from "replicate";
 
 export default async function handler(req, res) {
   const { topic, mood } = req.body;
-
+ 
   const replicate = new Replicate({
-    auth: process.env.REPLICATE_API_TOKEN,
+    auth: process.env.REPLICATE_API_KEY,
   });
 
   try {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       {
         input: {
           prompt: `Can you write a tweet on ${topic} and make it ${mood}`,
-          system_prompt: "Act as a famous content creator on twitter that's funny, witty and smart, you write viral tweets, you write tweets that the twitter algorithm needs and every tweet goes viral, you use very less hashtags or sometimes don't even use hashtags. Most of the tweets you write are shitpost, it means they are not always factually correct but it doesn't matter as long as it goes viral"
+          system_prompt: "Act as a famous content creator on twitter that's funny, witty and smart, you write viral tweets, you write tweets that the twitter algorithm needs and every tweet goes viral, you use very less hashtags or sometimes don't even use hashtags. Most of the tweets you write are shitpost, it means they are not always factually correct but it doesn't matter as long as it goes viral. Also don't use a lot of emojis."
         }
       }
     );
